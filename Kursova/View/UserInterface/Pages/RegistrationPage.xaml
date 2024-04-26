@@ -1,0 +1,49 @@
+﻿<Page x:Class="Kursova.View.UserInterface.Pages.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursova.View.UserInterface.Pages"
+      xmlns:userControls="clr-namespace:Kursova.View.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Background="Transparent">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" MaxHeight="200" MinHeight="100" />
+                <RowDefinition Height="20*" MaxHeight="100" MinHeight="50" />
+                <RowDefinition Height="30*" MaxHeight="200" MinHeight="100" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" HorizontalAlignment="Center" Margin="0,30,0,20" VerticalAlignment="Bottom"
+           Height="auto" Width="auto" Source="/img/user.png"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                </Grid.RowDefinitions>
+                <userControls:newTextBlock x:Name="regText" Placeholder="Логін" Grid.Row="0" Width="150" Height="20"/>
+                <userControls:newPasswordBlock x:Name="regPass" PlaceholderPass="Пароль" Grid.Row="1" Width="150" Height="20"/>
+                <userControls:newPasswordBlock x:Name="regPassReplie" PlaceholderPass="Повторіть пароль" Grid.Row="2" Width="150" Height="20"/>
+
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,25,0,0">
+                <Button Width="auto" Height="auto" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" Padding="20,0" Content="Зареєструватися"
+                Click="Button_Registr_Click" Background="Transparent" 
+                    BorderBrush="Transparent" Foreground="White" FontWeight="Bold"/>
+                <Button Width="auto" Height="auto" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" Padding="10,0" Margin="0,30,0,0" Content="Вхід"
+                Background="Transparent" BorderBrush="Transparent"
+                Click="Button_Authorization_Click" Foreground="White" FontWeight="Bold"/>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

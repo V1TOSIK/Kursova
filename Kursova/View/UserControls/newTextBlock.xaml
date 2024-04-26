@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Kursova.View.UserControls.newTextBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kursova.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="150">
+    <Grid Background="White">
+        <TextBox x:Name="inputText" Background="Transparent"
+                 BorderBrush="Black" FontSize="14"
+                 TextChanged="inputText_TextChanged"/>
+        <TextBlock Name="BackgroundText" Foreground="LightGray" Panel.ZIndex="-1"
+                   TextAlignment="Center" FontWeight="Medium" FontSize="14"
+                   Text="{Binding Placeholder}"/>
+    </Grid>
+</UserControl>

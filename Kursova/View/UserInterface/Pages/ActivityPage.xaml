@@ -1,0 +1,63 @@
+﻿<Page x:Class="Kursova.View.UserInterface.Pages.ActivityPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursova.View.UserInterface.Pages"
+      xmlns:userControls="clr-namespace:Kursova.View.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <userControls:newTextBlock x:Name="ExerciseBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Placeholder="Виконані вправи"/>
+            <userControls:newTextBlock x:Name="Calories_upvolumeBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Grid.Row="1" Placeholder="Кількість спожитих калорій"/>
+            <userControls:newTextBlock x:Name="Calories_downvolumeBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Grid.Row="2" Placeholder="Кількість спалених калорій"/>
+            <userControls:newTextBlock x:Name="StepsBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Grid.Row="3" Placeholder="Зроблено кроків"/>
+            <userControls:newTextBlock x:Name="TraveledBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Grid.Row="4" Placeholder="Пройдено км"/>
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <userControls:GrayTextBlock x:Name="AverageExerciseBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+          Grid.Row="0" GrayBind="" Padding="10,0"/>
+            <userControls:GrayTextBlock x:Name="AverageClories_upvolumeBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+          Grid.Row="1" GrayBind="" Padding="10,0"/>
+            <userControls:GrayTextBlock x:Name="AverageCalories_downvolumeBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+          Grid.Row="2" GrayBind="" Padding="10,0"/>
+            <userControls:GrayTextBlock x:Name="AverageStepsBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+          Grid.Row="3" GrayBind="" Padding="10,0"/>
+            <userControls:GrayTextBlock x:Name="AverageTraveledBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+          Grid.Row="4" GrayBind="" Padding="10,0"/>
+        </Grid>
+
+    </Grid>
+</Page>

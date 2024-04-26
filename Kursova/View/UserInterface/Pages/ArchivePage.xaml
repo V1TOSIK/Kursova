@@ -1,0 +1,23 @@
+﻿<Page x:Class="Kursova.View.UserInterface.Pages.ArchivePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursova.View.UserInterface.Pages"
+      xmlns:userControls="clr-namespace:Kursova.View.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="800">
+    <DataGrid x:Name="myDataGrid" FontSize="14" FontWeight="Medium" AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn x:Name="dataColumn" IsReadOnly="True" Header="Дата" Width="*" Binding="{Binding Path=ArchiveDateTime}"/>
+            <DataGridTextColumn x:Name="exerciseColumn" IsReadOnly="True" Header="Виконані вправи" Width="*" Binding="{Binding Path=ExerciseName}"/>
+            <DataGridTextColumn x:Name="upCaloriesColumn" IsReadOnly="True" Header="Спожиті калорії" Width="*" Binding="{Binding Path=ConsumedCalories}"/>
+            <DataGridTextColumn x:Name="downCaloriesColumn" IsReadOnly="True" Header="Спалені калорії" Width="*" Binding="{Binding Path=BurnedCalories}"/>
+            <DataGridTextColumn x:Name="stepsColumn" IsReadOnly="True" Header="Зроблено кроків" Width="*" Binding="{Binding Path=Steps}"/>
+            <DataGridTextColumn x:Name="traveledColumn" IsReadOnly="True" Header="Пройдена відстань" Width="*" Binding="{Binding Path=Traveled}"/>
+            <DataGridTextColumn x:Name="pulseColumn" IsReadOnly="True" Header="Пульс" Width="*" Binding="{Binding Path=Pulse}"/>
+            <DataGridTextColumn x:Name="pressureColumn" IsReadOnly="True" Header="Тиск" Width="*" Binding="{Binding Path=Pressure}"/>
+            <DataGridTextColumn x:Name="volumeOxygenInBloodColumn" IsReadOnly="True" Header="Кількість кисню в крові" Width="*" Binding="{Binding Path=VolumeOxygenInBlood}"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</Page>
