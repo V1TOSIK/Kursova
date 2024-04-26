@@ -98,7 +98,6 @@ namespace Kursova.View.UserInterface.Pages
         MessageBox.Show(message);
       }
     }
-
     private void CreateNewActivity()
     {
       string message = ChekingActivity(out string exerciseData, out double consumedCaloriesData, out double burnedCalories, out int stepsData, out double traveledData);
