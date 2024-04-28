@@ -72,10 +72,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Migrations\202404262259584_FirstMainMigration.cs" />
-    <Compile Include="Migrations\202404262259584_FirstMainMigration.Designer.cs">
-      <DependentUpon>202404262259584_FirstMainMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202404271835433_firstMigration.cs" />
+    <Compile Include="Migrations\202404271835433_firstMigration.Designer.cs">
+      <DependentUpon>202404271835433_firstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="View\UserControls\GrayTextBlock.xaml.cs">
       <DependentUpon>GrayTextBlock.xaml</DependentUpon>
     </Compile>
@@ -108,11 +109,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202404262223415_firstMigration.cs" />
-    <Compile Include="Migrations\202404262223415_firstMigration.Designer.cs">
-      <DependentUpon>202404262223415_firstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modul\Data\ArchiveData.cs" />
     <Compile Include="Modul\Data\UserActivity.cs" />
     <Compile Include="Modul\Data\UserData.cs" />
@@ -132,11 +128,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202404262223415_firstMigration.resx">
-      <DependentUpon>202404262223415_firstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202404262259584_FirstMainMigration.resx">
-      <DependentUpon>202404262259584_FirstMainMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202404271835433_firstMigration.resx">
+      <DependentUpon>202404271835433_firstMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

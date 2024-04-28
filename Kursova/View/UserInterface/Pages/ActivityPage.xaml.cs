@@ -78,7 +78,6 @@ namespace Kursova.View.UserInterface.Pages
 
       return message;
     }
-
     private void UpdateExistingActivity(UserActivity existingActivity)
     {
       string message = ChekingActivity(out string exerciseData, out double consumedCaloriesData, out double burnedCalories, out int stepsData, out double traveledData);
@@ -118,6 +117,26 @@ namespace Kursova.View.UserInterface.Pages
       else
       {
         MessageBox.Show(message);
+      }
+    }
+
+    public void AverageData()
+    {
+      if (context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId).Any())
+      {
+        double AverageCalories_down = context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
+                                                        .Average(t => t.ConsumedCalories);
+        double AverageCalories_up = context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
+                                                      .Average(t => t.BurnedCalories);
+        int AverageSteps = Convert.ToInt32(context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
+                                                .Average(t => t.Steps));
+        double AverageTraveled = context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
+                                                   .Average(t => t.Traveled);
+
+        AverageClories_upvolumeBox.GrayText.Text = $"{AverageCalories_down.ToString("0.00")} кал";
+        AverageCalories_downvolumeBox.GrayText.Text = $"{AverageCalories_up.ToString("0.00")} кал";
+        AverageStepsBox.GrayText.Text = $"{AverageSteps} кроків";
+        AverageTraveledBox.GrayText.Text = $"{AverageTraveled.ToString("0.00")} км";
       }
     }
   }

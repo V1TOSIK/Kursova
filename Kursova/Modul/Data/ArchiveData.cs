@@ -14,7 +14,7 @@ namespace Kursova.Modul.Data
     public double Traveled { get; set; }
     public int Pulse { get; set; }
     public string Pressure { get; set; }
-    public string VolumeOxygenInBlood { get; set; }
+    public int VolumeOxygenInBlood { get; set; }
   }
 
 }

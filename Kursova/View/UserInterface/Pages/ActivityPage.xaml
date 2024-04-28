@@ -48,15 +48,15 @@
             </Grid.RowDefinitions>
 
             <userControls:GrayTextBlock x:Name="AverageExerciseBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-          Grid.Row="0" GrayBind="" Padding="10,0"/>
+          Grid.Row="0" Padding="10,0"/>
             <userControls:GrayTextBlock x:Name="AverageClories_upvolumeBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-          Grid.Row="1" GrayBind="" Padding="10,0"/>
+          Grid.Row="1" Padding="10,0"/>
             <userControls:GrayTextBlock x:Name="AverageCalories_downvolumeBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-          Grid.Row="2" GrayBind="" Padding="10,0"/>
+          Grid.Row="2" Padding="10,0"/>
             <userControls:GrayTextBlock x:Name="AverageStepsBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-          Grid.Row="3" GrayBind="" Padding="10,0"/>
+          Grid.Row="3" Padding="10,0"/>
             <userControls:GrayTextBlock x:Name="AverageTraveledBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-          Grid.Row="4" GrayBind="" Padding="10,0"/>
+          Grid.Row="4" Padding="10,0"/>
         </Grid>
 
     </Grid>

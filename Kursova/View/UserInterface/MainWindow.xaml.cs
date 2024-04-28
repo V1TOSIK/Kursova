@@ -5,6 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
+using System.Windows.Threading;
 
 namespace Kursova
 {
@@ -15,49 +16,72 @@ namespace Kursova
     private UserDate todayUserDate;
     private ActivityPage activityPage;
     private HealthyPage healthyPage;
+    private DispatcherTimer timer;
+    private DateTime firstDateTime;
     public MainWindow(UserData user, MyDBContext context)
     {
       InitializeComponent();
       this.context = context;
       this.user = user;
+      firstDateTime = DateTime.Today;
+      InitializeTimer();
 
     }
-    private void SaveDataButton_Click(object sender, RoutedEventArgs e)
+    private void InitializeTimer()
     {
-      if (activityPage != null && mainFrame.Content == activityPage) activityPage.SaveActivityData();
-      if (healthyPage != null && mainFrame.Content == healthyPage) healthyPage.SaveHealthData();
+      
+      timer = new DispatcherTimer();
+      timer.Interval = TimeSpan.FromSeconds(1);
+      timer.Tick += Timer_Tick;
+      timer.Start();
+      /*MessageBox.Show("good");*/
     }
 
-    private void Window_Loaded(object sender, RoutedEventArgs e)
+    private void Timer_Tick(object sender, EventArgs e)
     {
-      DateTimeBlock.Text = DateTime.Today.ToString("dd.MM.yyyy");
-      DateTime today = DateTime.Today;
+      UpdateData();
+    }
+    private void UpdateData() 
+    {
       try
       {
-        bool userTimeExists = context.Dates.Any(t => t.UserId == user.Id && t.Datetime == today);
-
-        if (userTimeExists)
+        todayUserDate = GetTodayUserDate();
+        if (todayUserDate != null)
         {
-          todayUserDate = context.Dates.FirstOrDefault(t => t.UserId == user.Id && t.Datetime == today);
+          DateTimeBlock.Text = DateTime.Today.ToString("dd.MM.yyyy");
+          if (activityPage == null || firstDateTime != todayUserDate.Datetime) activityPage = new ActivityPage(context, todayUserDate);
+          if (healthyPage == null || firstDateTime != todayUserDate.Datetime) healthyPage = new HealthyPage(context, todayUserDate);
         }
-        else
-        {
-          todayUserDate = new UserDate()
-          {
-            Datetime = today,
-            UserId = user.Id,
-          };
-          context.Dates.Add(todayUserDate);
-          context.SaveChanges();
-        }
-        if (activityPage == null) activityPage = new ActivityPage(context, todayUserDate);
-        if (healthyPage == null) healthyPage = new HealthyPage(context, todayUserDate);
+        activityPage.AverageData();
+        healthyPage.AverageData();
+        if(todayUserDate.Datetime != firstDateTime) firstDateTime = todayUserDate.Datetime;
       }
       catch (Exception ex)
       {
         MessageBox.Show("error: " + ex.Message);
         throw;
       }
+    }
+    private void SaveDataButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (activityPage != null && mainFrame.Content == activityPage) activityPage.SaveActivityData();
+      if (healthyPage != null && mainFrame.Content == healthyPage) healthyPage.SaveHealthData();
+      
+    }
+    private UserDate GetTodayUserDate() { 
+    var today = DateTime.Today;
+    return context.Dates.FirstOrDefault(t => t.UserId == user.Id && t.Datetime == today) ?? CreateTodayUserDate(today);
+    }
+    private UserDate CreateTodayUserDate(DateTime today) {
+      todayUserDate = new UserDate()
+      {
+        Datetime = today,
+        UserId = user.Id,
+      };
+      context.Dates.Add(todayUserDate);
+      context.SaveChanges();
+      return todayUserDate;
+
     }
     private void activity_button_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {

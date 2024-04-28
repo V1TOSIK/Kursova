@@ -4,6 +4,8 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Windows;
 using System;
+using System.Linq;
+using System.Data.Entity;
 
 namespace Kursova.View.UserInterface.Pages
 {
@@ -41,7 +43,7 @@ namespace Kursova.View.UserInterface.Pages
       PressureBox.inputText.Text = string.Empty;
       OxygenInBloodBox.inputText.Text = string.Empty;
     }
-    private string ChekingHealth(out int pulse, out string pressure, out string volumeOxygenInBlood)
+    private string ChekingHealth(out int pulse, out string pressure, out int volumeOxygenInBlood)
     {
       string message = string.Empty;
 
@@ -52,16 +54,36 @@ namespace Kursova.View.UserInterface.Pages
       }
 
       if (string.IsNullOrEmpty(PressureBox.inputText.Text)) { pressure = string.Empty; }
-      else { pressure = PressureBox.inputText.Text; }
+      else { pressure = PressureCalculate(PressureBox.inputText.Text,ref message); }
 
-      if (string.IsNullOrEmpty(OxygenInBloodBox.inputText.Text)) { volumeOxygenInBlood = string.Empty; }
-      else { volumeOxygenInBlood = OxygenInBloodBox.inputText.Text; }
+      if (int.TryParse(OxygenInBloodBox.inputText.Text, out volumeOxygenInBlood))
+      {
+        if (volumeOxygenInBlood < 60) message += "Кількість кисню в крові не може бути менше 60%\n";
+        if (volumeOxygenInBlood > 100) message += "Кількість кисню в крові не може бути більше 100%\n";
+      }
 
       return message;
     }
+    private string PressureCalculate(string pressure,ref string message)
+    {
+      pressure.Trim();
+      string[] pressures = pressure.Split('/', '.', ',', ' ');
+      if (int.TryParse(pressures[0], out int UpperPressure))
+      {
+        if (UpperPressure < 90) { message += "Верхній(Систолічний) тиск не може бути менше 90\n"; }
+        if (UpperPressure > 180) { message += "Верхній(Систолічний) тиск не може бути більше 180\n"; }
+      } else message += "Верхній (Систолічний) тиск має недопустимі значення\n";
+      if (int.TryParse(pressures[1], out int LowerPressure))
+      {
+        if (LowerPressure < 60) { message += "Нижній(Діастолічний) тиск не може бути менше 60\n"; }
+        if (LowerPressure > 100) { message += "Нижній(Діастолічний) тиск не може бути більше 100\n"; }
+      }
+      else message += "Нижній (Діастолічний) тиск має недопустимі значення\n";
+      return $"{UpperPressure}/{LowerPressure}";
+    }
     private void CreateNewHealth()
     {
-      string message = ChekingHealth(out int pulse, out string pressure, out string volumeOxygenInBlood);
+      string message = ChekingHealth(out int pulse, out string pressure, out int volumeOxygenInBlood);
 
       if (message == string.Empty)
       {
@@ -77,6 +99,46 @@ namespace Kursova.View.UserInterface.Pages
         ClearText();
       }
       else MessageBox.Show(message);
+    }
+    public void AverageData()
+    {
+      if (context.Healths.Where(a => a.Date.UserId == todayUserDate.UserId).Any())
+      {
+        int AveragePulse = Convert.ToInt32(context.Healths.Where(a => a.Date.UserId == todayUserDate.UserId)
+                                                          .Where(a => a.Pulse != 0)
+                                                          .Average(t => t.Pulse));
+        var AveragePressure = AveragePressureCalculate();
+
+        int AverageOxygenInBlood = Convert.ToInt32(context.Healths.Where(a => a.Date.UserId == todayUserDate.UserId)
+                                                                  .Where(a => a.VolumeOxygenInBlood != 0)
+                                                                  .Average(t => t.VolumeOxygenInBlood));
+
+        
+        AveragePulseBox.GrayText.Text = $"{AveragePulse} уд/хв";
+        AveragePressureBox.GrayText.Text = $"{AveragePressure}";
+        AverageOxygenInBloodBox.GrayText.Text = $"{AverageOxygenInBlood}%";
+      }
+    }
+    private string AveragePressureCalculate()
+    {
+      int UpperSum = 0, LowerSum = 0, count = 0;
+      foreach (var item in context.Healths)
+      {
+        string[] pressures = item.Pressure.Split('/', '.', ',', ' ');
+        if (int.TryParse(pressures[0], out int UpperPressure) && int.TryParse(pressures[1], out int LowerPressure))
+        {
+          UpperSum += UpperPressure;
+          LowerSum += LowerPressure;
+          count++;
+        }
+      }
+      if (count > 0)
+      {
+        int resultUpperPressure = Convert.ToInt32(UpperSum / count);
+        int resultLowerPressure = Convert.ToInt32(LowerSum / count);
+        return $"{resultUpperPressure}/{resultLowerPressure}";
+      }
+      return "";
     }
   }
 }

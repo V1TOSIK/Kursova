@@ -7,13 +7,13 @@ namespace Kursova.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class FirstMainMigration : IMigrationMetadata
+    public sealed partial class firstMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstMainMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(firstMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202404262259584_FirstMainMigration"; }
+            get { return "202404271835433_firstMigration"; }
         }
         
         string IMigrationMetadata.Source

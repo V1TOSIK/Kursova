@@ -40,11 +40,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <userControls:GrayTextBlock x:Name="AveragePulseBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-             Grid.Row="0" GrayBind="" Padding="10,0"/>
+             Grid.Row="0" Padding="10,0"/>
             <userControls:GrayTextBlock x:Name="AveragePressureBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-             Grid.Row="1" GrayBind="" Padding="10,0"/>
+             Grid.Row="1" Padding="10,0"/>
             <userControls:GrayTextBlock x:Name="AverageOxygenInBloodBox" Width="auto" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
-             Grid.Row="2" GrayBind="" Padding="10,0"/>
+             Grid.Row="2" Padding="10,0"/>
         </Grid>
     </Grid>
 </Page>
