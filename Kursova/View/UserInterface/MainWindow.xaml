@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:Kursova"
         mc:Ignorable="d"
         Height="450" Width="800"
+        MinHeight="450" MinWidth="800"
         WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#212121" Offset="1"/>
+            <GradientStop Color="#2e2e2e" Offset="0"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -22,38 +29,38 @@
             </Grid.ColumnDefinitions>
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0"/>
             <TextBlock x:Name="DateTimeBlock"  Grid.Column="0" TextAlignment="Center"  
-        VerticalAlignment="Center" FontSize="14" Foreground="Black"
+        VerticalAlignment="Center" FontSize="14" Foreground="LightGray"
         FontWeight="Bold"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Height="45"/>
 
             <Border x:Name="activity_border" BorderBrush="Black" BorderThickness="1" Grid.Column="1"/>
             <TextBlock x:Name="activity_button" Grid.Column="1" TextAlignment="Center" Text="Заняття та харчування"
         VerticalAlignment="Center" FontSize="13" MouseLeftButtonDown="activity_button_MouseLeftButtonDown"
-        FontWeight="Medium"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Height="45"/>
+        FontWeight="Medium"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Height="45" Foreground="LightGray"/>
 
             <Border x:Name="health_border" BorderBrush="Black" BorderThickness="1" Grid.Column="2"/>
             <TextBlock x:Name="health_page_button" Grid.Column="2" TextAlignment="Center" Text="Стан здоров'я" 
         VerticalAlignment="Center" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" FontSize="13"
-        FontWeight="Medium" MouseLeftButtonDown="health_page_button_MouseLeftButtonDown" Height="45"/>
+        FontWeight="Medium" MouseLeftButtonDown="health_page_button_MouseLeftButtonDown" Height="45" Foreground="LightGray"/>
 
             <Border x:Name="archive_border" BorderBrush="Black"  BorderThickness="1" Grid.Column="3"/>
             <TextBlock x:Name="archive_page_button" Grid.Column="3" TextAlignment="Center" Text="Архів" 
         VerticalAlignment="Center" FontSize="13" MouseLeftButtonDown="archive_page_button_MouseLeftButtonDown"
-        FontWeight="Medium"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Height="45"/>
+        FontWeight="Medium"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Height="45" Foreground="LightGray"/>
 
         </Grid>
 
         <Frame x:Name="mainFrame" Grid.Row="1" BorderBrush="black" BorderThickness="0" NavigationUIVisibility="Hidden">
             <Frame.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="LightGray" Offset="1"/>
-                    <GradientStop Color="#fff" Offset="0"/>
+                    <GradientStop Color="#212121" Offset="1"/>
+                    <GradientStop Color="#3d3d3d" Offset="0"/>
                 </LinearGradientBrush>
             </Frame.Background>
         </Frame>
         <Grid Grid.Row="2">
             <Button x:Name="SaveDataButton" Grid.Row="2" Width="100" Height="30" HorizontalAlignment="Center" 
-    VerticalAlignment="Center" Content="Зберегти" Background="Transparent" FontSize="18"
-    FontWeight="Bold" BorderBrush="Black" Click="SaveDataButton_Click"/>
+                    VerticalAlignment="Center" Content="Зберегти" Background="Transparent" FontSize="18"
+                    FontWeight="Bold" BorderBrush="White" BorderThickness="0.1" Click="SaveDataButton_Click" Foreground="LightGray"/>
             <Border BorderBrush="Black" BorderThickness="1"/>
         </Grid>
     </Grid>

@@ -51,8 +51,8 @@ namespace Kursova.View.UserInterface.Pages
     {
       string message = string.Empty;
 
-      if (!string.IsNullOrEmpty(ExerciseBox.inputText.Text)) { exerciseData = ExerciseBox.inputText.Text; }
-      else { exerciseData = string.Empty; }
+      if (string.IsNullOrEmpty(ExerciseBox.inputText.Text)) { exerciseData = string.Empty; }
+      else { exerciseData = ExerciseBox.inputText.Text.ToLower(); }
 
       if (double.TryParse(Calories_upvolumeBox.inputText.Text, out consumedCaloriesData))
       {
@@ -124,20 +124,45 @@ namespace Kursova.View.UserInterface.Pages
     {
       if (context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId).Any())
       {
+        string AverageExerciseName = ExerciseModa();
+
         double AverageCalories_down = context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
                                                         .Average(t => t.ConsumedCalories);
         double AverageCalories_up = context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
                                                       .Average(t => t.BurnedCalories);
         int AverageSteps = Convert.ToInt32(context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
-                                                .Average(t => t.Steps));
+                                                             .Average(t => t.Steps));
         double AverageTraveled = context.Activities.Where(a => a.Date.UserId == todayUserDate.UserId)
                                                    .Average(t => t.Traveled);
 
+        AverageExerciseBox.GrayText.Text = $"{AverageExerciseName}";
         AverageClories_upvolumeBox.GrayText.Text = $"{AverageCalories_down.ToString("0.00")} кал";
         AverageCalories_downvolumeBox.GrayText.Text = $"{AverageCalories_up.ToString("0.00")} кал";
         AverageStepsBox.GrayText.Text = $"{AverageSteps} кроків";
         AverageTraveledBox.GrayText.Text = $"{AverageTraveled.ToString("0.00")} км";
       }
+    }
+    private string ExerciseModa()
+    {
+      List<string> ExName = new List<string>();
+      
+      foreach (var activity in context.Activities)
+      {
+        string[] moda = activity.ExerciseName.Split(' ', ',');
+        ExName.AddRange(moda);
+      }
+      string MostRepeatedExercise = "";
+      int maxCount = 0;
+      foreach (var exercise in ExName)
+      {
+        int count = ExName.Count(e => e == exercise);
+        if (count > maxCount)
+        {
+          maxCount = count;
+          MostRepeatedExercise = exercise;
+        }
+      }
+      return MostRepeatedExercise;
     }
   }
 }

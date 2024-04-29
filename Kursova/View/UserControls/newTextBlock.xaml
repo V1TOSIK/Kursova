@@ -9,7 +9,7 @@
     <Grid Background="White">
         <TextBox x:Name="inputText" Background="Transparent"
                  BorderBrush="Black" FontSize="14"
-                 TextChanged="inputText_TextChanged"/>
+                 TextChanged="inputText_TextChanged" Width="auto"/>
         <TextBlock Name="BackgroundText" Foreground="LightGray" Panel.ZIndex="-1"
                    TextAlignment="Center" FontWeight="Medium" FontSize="14"
                    Text="{Binding Placeholder}"/>

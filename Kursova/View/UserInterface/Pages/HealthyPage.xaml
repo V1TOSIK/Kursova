@@ -11,10 +11,10 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="40*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -25,10 +25,13 @@
             </Grid.RowDefinitions>
             <userControls:newTextBlock x:Name="PulseBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
             Placeholder="Пульс"/>
+            <Image Source="/img/pulse.png" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="auto" Height="auto" Margin="5"/>
             <userControls:newTextBlock x:Name="PressureBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
             Grid.Row="1" Placeholder="Тиск"/>
+            <Image Source="/img/blood-pressure.png" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Width="auto" Height="auto" Margin="5"/>
             <userControls:newTextBlock x:Name="OxygenInBloodBox" Width="350" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
             Grid.Row="2" Placeholder="Кількість кисню в крові"/>
+            <Image Source="/img/oxygen.png" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="auto" Height="auto" Margin="5"/>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

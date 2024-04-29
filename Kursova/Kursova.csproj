@@ -144,7 +144,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Page Include="View\UserControls\GrayTextBlock.xaml">
       <SubType>Designer</SubType>
@@ -193,6 +192,23 @@
   <ItemGroup>
     <Resource Include="img\logo.ico" />
     <Resource Include="img\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\white_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\calorie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\calories-calculator.png" />
+    <Resource Include="img\destination.png" />
+    <Resource Include="img\exercise-routine.png" />
+    <Resource Include="img\footsteps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\blood-pressure.png" />
+    <Resource Include="img\oxygen.png" />
+    <Resource Include="img\pulse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

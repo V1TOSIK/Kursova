@@ -34,7 +34,6 @@ namespace Kursova
       timer.Interval = TimeSpan.FromSeconds(1);
       timer.Tick += Timer_Tick;
       timer.Start();
-      /*MessageBox.Show("good");*/
     }
 
     private void Timer_Tick(object sender, EventArgs e)
