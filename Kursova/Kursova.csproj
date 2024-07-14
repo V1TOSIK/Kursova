@@ -72,11 +72,28 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="controller\ActivityPage.xaml.cs" />
+    <Compile Include="controller\ArchivePage.xaml.cs" />
+    <Compile Include="controller\AuthorizationPage.xaml.cs" />
+    <Compile Include="controller\Authorization_registrationWindow.xaml.cs" />
+    <Compile Include="controller\HealthyPage.xaml.cs" />
+    <Compile Include="controller\MainWindow.xaml.cs" />
+    <Compile Include="controller\RegistrationPage.xaml.cs" />
     <Compile Include="Migrations\202404271835433_firstMigration.cs" />
     <Compile Include="Migrations\202404271835433_firstMigration.Designer.cs">
       <DependentUpon>202404271835433_firstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202407141944580_newMig.cs" />
+    <Compile Include="Migrations\202407141944580_newMig.Designer.cs">
+      <DependentUpon>202407141944580_newMig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Data\ArchiveData.cs" />
+    <Compile Include="Model\Data\User.cs" />
+    <Compile Include="Model\Data\UserActivity.cs" />
+    <Compile Include="Model\Data\UserDate.cs" />
+    <Compile Include="Model\Data\UserHealth.cs" />
+    <Compile Include="Model\MyDBContext.cs" />
     <Compile Include="View\UserControls\GrayTextBlock.xaml.cs">
       <DependentUpon>GrayTextBlock.xaml</DependentUpon>
     </Compile>
@@ -86,35 +103,8 @@
     <Compile Include="View\UserControls\newTextBlock.xaml.cs">
       <DependentUpon>newTextBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserInterface\Authorization_registrationWindow.xaml.cs">
-      <DependentUpon>Authorization_registrationWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserInterface\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserInterface\Pages\ActivityPage.xaml.cs">
-      <DependentUpon>ActivityPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserInterface\Pages\ArchivePage.xaml.cs">
-      <DependentUpon>ArchivePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserInterface\Pages\AuthorizationPage.xaml.cs">
-      <DependentUpon>AuthorizationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserInterface\Pages\HealthyPage.xaml.cs">
-      <DependentUpon>HealthyPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserInterface\Pages\RegistrationPage.xaml.cs">
-      <DependentUpon>RegistrationPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modul\Data\ArchiveData.cs" />
-    <Compile Include="Modul\Data\UserActivity.cs" />
-    <Compile Include="Modul\Data\UserData.cs" />
-    <Compile Include="Modul\Data\UserDate.cs" />
-    <Compile Include="Modul\Data\UserHealth.cs" />
-    <Compile Include="Modul\MyDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -130,6 +120,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202404271835433_firstMigration.resx">
       <DependentUpon>202404271835433_firstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407141944580_newMig.resx">
+      <DependentUpon>202407141944580_newMig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
